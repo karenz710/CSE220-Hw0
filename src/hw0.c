@@ -18,6 +18,12 @@ char board[ROWS][COLS] = {
 
 int main()
 {
-	printf("Hello World\n");
+    //print the game board
+    printf("   ");
+    for (int i = 0; i<COLS; i++) {
+        printf("%d ", top_key[i]);
+    }
+    printf("\n");
+    
 	return 0;
 }
