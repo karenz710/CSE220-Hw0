@@ -20,20 +20,36 @@ void printBoard();
 
 int main()
 {
-    //print the game board
-    printBoard();
+    char choice;
+    int piece;
+    
+    while(1){ // while true
+        // print the game board
+        printBoard();
+        // ask for user input
+        while(1){
+            printf("Choose a piece (1-5) or q to quit: ");
+            scanf(" %c", &choice); 
+            if (choice == 'q'){
+                return 0;
+            } else if (choice >= '1' && choice <= '5') {
+                piece = choice - '0';
+                break; 
+            } else {
+                printf("Invalid choice. Choose a piece (1-5) or q to quit: ");
+            } 
+        }
+    
+    }
 	return 0;
 }
-void printBoard()
-{
+void printBoard() {
     // print top keys
     printf("    ");
     for (int i = 0; i<COLS; i++) {
         printf("%d ", top_key[i]);
     }
-    printf("\n");
-    printf("    v v v v v");
-    printf("\n");
+    printf("\n    v v v v v\n");
 
     // print a left key then > then that row and then print < and right key go by index: 0, 1, 2, 3, 4
     for (int i = 0; i < ROWS; i++){
@@ -45,10 +61,9 @@ void printBoard()
         printf("\n");
     }
     // print bottom row
-    printf("    ^ ^ ^ ^ ^");
-    printf("\n");
-    printf("    ");
+    printf("    ^ ^ ^ ^ ^\n    ");
     for (int i = 0; i<COLS; i++) {
         printf("%d ", bottom_key[i]);
     }
+    printf("\n");
 }
