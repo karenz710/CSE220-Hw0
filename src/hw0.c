@@ -27,8 +27,9 @@ int main() {
             // print the game board
             printBoard();
             // ask for user input for piece until valid
+            printf("Choose a piece (1-5) or q to quit: ");
             while(1){
-                printf("Choose a piece (1-5) or q to quit: ");
+                
                 scanf(" %c", &choice); 
                 if (choice == 'q'){
                     return 0;
@@ -40,8 +41,8 @@ int main() {
                 } 
             }
             // ask for row and col
+            printf("Choose a row (0-4): ");
             while(1) {
-                printf("Choose a row (0-4): ");
                 scanf("%d", &row);
                 if (row >= 0 && row <= 4){
                     break;
@@ -49,8 +50,9 @@ int main() {
                     printf("Invalid choice. Choose a row (0-4): ");
                 }
             }
+            printf("Choose a column (0-4): ");
             while(1) {
-                printf("Choose a column (0-4): ");
+                
                 scanf("%d", &col);
                 if (col >= 0 && col <= 4){
                     break;
