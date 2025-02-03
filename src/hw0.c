@@ -65,7 +65,25 @@ int main() {
                 board[row][col] = piece + '0';
                 break;
             } else{
-                printf("Invalid move. The spot is already occupied.\n");
+                printf("Invalid choice. The spot is already occupied.\n");
+            }
+            // check if board is full
+            int isFull = 1;
+            for (int i = 0; i < ROWS; i++){
+                for (int j = 0; j < COLS; j++){
+                    if(board[i][j]=='-'){
+                        isFull = 0;
+                        break;
+                    }
+                }
+                if(!isFull)
+                    break;
+            }
+
+            if(isFull){
+                printf("Congratulations, you have filled the board!\n");
+                printBoard();
+                return 0;
             }
         }
     }
