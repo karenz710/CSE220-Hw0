@@ -18,32 +18,63 @@ char board[ROWS][COLS] = {
 
 void printBoard();
 
-int main()
-{
+int main() {
     char choice;
-    int piece;
+    int piece, row, col;
     
     while(1){ // while true
-        // print the game board
-        printBoard();
-        // ask for user input
         while(1){
-            printf("Choose a piece (1-5) or q to quit: ");
-            scanf(" %c", &choice); 
-            if (choice == 'q'){
-                return 0;
-            } else if (choice >= '1' && choice <= '5') {
-                piece = choice - '0';
-                break; 
-            } else {
-                printf("Invalid choice. Choose a piece (1-5) or q to quit: ");
-            } 
+            // print the game board
+            printBoard();
+            // ask for user input for piece until valid
+            while(1){
+                printf("Choose a piece (1-5) or q to quit: ");
+                scanf(" %c", &choice); 
+                if (choice == 'q'){
+                    return 0;
+                } else if (choice >= '1' && choice <= '5') {
+                    piece = choice - '0';
+                    break; 
+                } else {
+                    printf("Invalid choice. Choose a piece (1-5) or q to quit: ");
+                } 
+            }
+            // ask for row and col
+            while(1) {
+                printf("Choose a row (0-4): ");
+                scanf("%d", &row);
+                if (row >= 0 && row <= 4){
+                    break;
+                } else {
+                    printf("Invalid choice. Choose a row (0-4): ");
+                }
+            }
+            while(1) {
+                printf("Choose a column (0-4): ");
+                scanf("%d", &col);
+                if (col >= 0 && col <= 4){
+                    break;
+                } else {
+                    printf("Invalid choice. Choose a column (0-4): ");
+                }
+            }
+            // check if pos is valid
+            if(board[row][col]=='-'){
+                board[row][col] = piece + '0';
+                break;
+            } else{
+                printf("Invalid move. The spot is already occupied.\n");
+            }
         }
-    
+        printf(" %d ", col);
+        printf(" %d ", row);
+        printf(" %d ", piece);
+
     }
 	return 0;
 }
-void printBoard() {
+void printBoard()
+{
     // print top keys
     printf("    ");
     for (int i = 0; i<COLS; i++) {
