@@ -16,14 +16,39 @@ char board[ROWS][COLS] = {
 	
 //scanf(" %c", &choice); //this command will erase whitespace in the token selection and read 1 char (replace the 'c' with a 'd' to read an int)
 
+void printBoard();
+
 int main()
 {
     //print the game board
-    printf("   ");
+    printBoard();
+	return 0;
+}
+void printBoard()
+{
+    // print top keys
+    printf("    ");
     for (int i = 0; i<COLS; i++) {
         printf("%d ", top_key[i]);
     }
     printf("\n");
-    
-	return 0;
+    printf("    v v v v v");
+    printf("\n");
+
+    // print a left key then > then that row and then print < and right key go by index: 0, 1, 2, 3, 4
+    for (int i = 0; i < ROWS; i++){
+        printf("%d > ", left_key[i]);
+        for (int j = 0; j < COLS; j++){
+            printf("%c ", board[i][j]);
+        }
+        printf("< %d", right_key[i]);
+        printf("\n");
+    }
+    // print bottom row
+    printf("    ^ ^ ^ ^ ^");
+    printf("\n");
+    printf("    ");
+    for (int i = 0; i<COLS; i++) {
+        printf("%d ", bottom_key[i]);
+    }
 }
