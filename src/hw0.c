@@ -21,70 +21,66 @@ void printBoard();
 int main() {
     char choice;
     int piece, row, col;
-    
-    while(1){ // while true
-        while(1){
-            // print the game board
-            printBoard();
-            // ask for user input for piece until valid
-            printf("Choose a piece (1-5) or q to quit: ");
-            while(1){
-                
-                scanf(" %c", &choice); 
-                if (choice == 'q'){
-                    return 0;
-                } else if (choice >= '1' && choice <= '5') {
-                    piece = choice - '0';
-                    break; 
-                } else {
-                    printf("Invalid choice. Choose a piece (1-5) or q to quit: ");
-                } 
-            }
-            // ask for row and col
-            printf("Choose a row (0-4): ");
-            while(1) {
-                scanf("%d", &row);
-                if (row >= 0 && row <= 4){
-                    break;
-                } else {
-                    printf("Invalid choice. Choose a row (0-4): ");
-                }
-            }
-            printf("Choose a column (0-4): ");
-            while(1) {
-                
-                scanf("%d", &col);
-                if (col >= 0 && col <= 4){
-                    break;
-                } else {
-                    printf("Invalid choice. Choose a column (0-4): ");
-                }
-            }
-            // check if pos is valid
-            if(board[row][col]=='-'){
-                board[row][col] = piece + '0';
-                break;
-            } else{
-                printf("Invalid choice. That space is already occupied.\n");
-            }
-            // check if board is full
-            int isFull = 1;
-            for (int i = 0; i < ROWS; i++){
-                for (int j = 0; j < COLS; j++){
-                    if(board[i][j]=='-'){
-                        isFull = 0;
-                        break;
-                    }
-                }
-                if(!isFull)
-                    break;
-            }
 
-            if(isFull){
-                printf("Congratulations, you have filled the board!\n");
-                printBoard();
+    while(1){
+        // print the game board
+        printBoard();
+        // ask for user input for piece until valid
+        printf("Choose a piece (1-5) or q to quit: ");
+        while(1){
+            
+            scanf(" %c", &choice); 
+            if (choice == 'q'){
                 return 0;
+            } else if (choice >= '1' && choice <= '5') {
+                piece = choice - '0';
+                break; 
+            } else {
+                printf("Invalid choice. Choose a piece (1-5) or q to quit: ");
+            } 
+        }
+        // ask for row and col
+        printf("Choose a row (0-4): ");
+        while(1) {
+            scanf("%d", &row);
+            if (row >= 0 && row <= 4){
+                break;
+            } else {
+                printf("Invalid choice. Choose a row (0-4): ");
             }
+        }
+        printf("Choose a column (0-4): ");
+        while(1) {
+            scanf("%d", &col);
+            if (col >= 0 && col <= 4){
+                break;
+            } else {
+                printf("Invalid choice. Choose a column (0-4): ");
+            }
+        }
+        // check if pos is valid
+        if(board[row][col]=='-'){
+            board[row][col] = piece + '0';
+        } else{
+            printf("Invalid choice. That space is already occupied.\n");
+        }
+        // check if board is full
+        int isFull = 1;
+        for (int i = 0; i < ROWS; i++){
+            for (int j = 0; j < COLS; j++){
+                if(board[i][j]=='-'){
+                    isFull = 0;
+                    break;
+                }
+            }
+            if(!isFull)
+                break;
+        }
+
+        if(isFull){
+            printf("Congratulations, you have filled the board!\n");
+            printBoard();
+            return 0;
         }
     }
 	return 0;
