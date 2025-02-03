@@ -68,10 +68,6 @@ int main() {
                 printf("Invalid move. The spot is already occupied.\n");
             }
         }
-        printf(" %d ", col);
-        printf(" %d ", row);
-        printf(" %d ", piece);
-
     }
 	return 0;
 }
